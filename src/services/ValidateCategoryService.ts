@@ -10,9 +10,13 @@ class ValidateCategoryService {
   public async execute({ title }: Request): Promise<Category> {
     const categoryRepository = getRepository(Category);
 
+    console.log(title);
+
     const checkCategoryExists = await categoryRepository.findOne({
       where: { title },
     });
+
+    console.log(checkCategoryExists);
 
     if (checkCategoryExists) {
       return checkCategoryExists;
